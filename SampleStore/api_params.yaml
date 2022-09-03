@@ -1,0 +1,13 @@
+environments:
+  - name: dev
+    endpoints:
+      production:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/
+      sandbox:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/      
+  - name: prod
+    endpoints:
+      production:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/    
+      sandbox:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/
