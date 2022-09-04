@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "26588a77-d6fc-47a0-987b-d38bbe108530",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10135659"
+	},
+	"item": [
+		{
+			"name": "Pizzashack",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ4NXQiOiJOMkpqTWpOaU0yRXhZalJrTnpaalptWTFZVEF4Tm1GbE5qZzRPV1UxWVdRMll6YzFObVk1TlEiLCJraWQiOiJNREpsTmpJeE4yRTFPR1psT0dWbU1HUXhPVEZsTXpCbU5tRmpaalEwWTJZd09HWTBOMkkwWXpFNFl6WmpOalJoWW1SbU1tUTBPRGRpTkRoak1HRXdNQV9SUzI1NiIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhZG1pbiIsImF1dCI6IkFQUExJQ0FUSU9OIiwiYXVkIjoiUFZsbXBrdElFcjZiMVB0RDRYaFlzd0RRR1JRYSIsIm5iZiI6MTY2MjI2ODIzNCwiYXpwIjoiUFZsbXBrdElFcjZiMVB0RDRYaFlzd0RRR1JRYSIsInNjb3BlIjoiZGVmYXVsdCIsImlzcyI6Imh0dHBzOlwvXC9sb2NhbGhvc3Q6OTQ0M1wvb2F1dGgyXC90b2tlbiIsImV4cCI6MTY2MjI3MTgzNCwiaWF0IjoxNjYyMjY4MjM0LCJqdGkiOiIxN2ZkODYyMy01NDVmLTQzMzMtOWFmYi05NTM3MjE2NmRhMjEifQ.kZbXUs98s10hUQjwC3_unETaJTDB-qCr9r6Bjm29b_2f9OkWCxV6oM-egC6TXbOnZt899XJX_jo2CGC5vkM_o8O2X261mYMoPdfK3oSEPRnCNi7-Vwx34xcUHWz64j43JsODLVAxbe0JJ70Q6KDIF4k07LHX_R0n8U6wtggxxxnwbhc8Q50ou3YceV0uITtZHXHhGTaXD2Dav-aoN6Jb3IAW5xku0ZeincOa_yXLr1FktA6QPgS8QiLwbotOHe7Rp7M8vSW0UevvUsHBxfGOOEjQmkjROaaBdDs7sDkixOn32p_pToT5GKRuQgf2Y8K7xbs78w-ZUNe7EinmT3IN5Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://34.121.158.77:8243/pizzashack/1.0.0/menu",
+					"protocol": "https",
+					"host": [
+						"34",
+						"121",
+						"158",
+						"77"
+					],
+					"port": "8243",
+					"path": [
+						"pizzashack",
+						"1.0.0",
+						"menu"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
