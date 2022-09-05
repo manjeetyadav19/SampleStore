@@ -1,0 +1,257 @@
+add env
+apictl add-env -e env_name -apim api_managment_endpoint_url --token token_url 
+
+eg. #apictl add-env -e dev --apim https://34.121.158.77:9443 --token https://34.121.158.77:8243/token
+
+Login to env(dev)   it will ask the user you can use wso2 api manager user_id
+apictl login dev -k
+
+List the available API in the Env 
+apictl list apis -e dev -k
+
+Export API
+apictl export-api -n MobileStore -v 1.0 -e dev -k
+
+after export you will get a zip file unzip inside that zip you will get 2 file 
+api.yaml 
+swagger.yaml
+
+Now we will create a new file in it api_params.yaml, it will container dev/prod env endpoint url
+api_params.yaml
+-------------------------------------
+environments:
+  - name: dev
+    endpoints:
+      production:
+        url: https://jsonplaceholder.typicode.com
+      sandbox:
+        url: https://jsonplaceholder.typicode.com
+  - name: prod
+    endpoints:
+      production:
+        url: https://jsonplaceholder.typicode.com
+      sandbox:
+        url: https://jsonplaceholder.typicode.com
+
+deploy:
+  import:
+    update: true
+    preserveProvider: true 
+-----------------------------------------
+
+Now push this MobileStore Api to github from your local
+
+Now David create a App(MyStore) that consume MobileStore Api 
+and then David export MyStore app on local 
+and push that to same github repo
+
+
+Login to Developer portal - go to application create new application - MyStore
+Subscribe MobileStore API
+Generate Production keys
+Try Out
+
+David login to dev env
+apictl login dev -k
+
+List the application in the Env 
+apictl list apps -e dev -k
+
+
+Export MyStore application
+apictl export-app -n MyStore -o admin -e dev -k --withKeys		#david want client id and secret and subscription as well
+
+after export you will get a zip file unzip inside that zip you will get 1 file 
+MyStore.json
+
+create another file on same location
+application_params.yaml
+---------------------------------
+import:
+ update: true
+ preserveOwner: true
+ skipKeys: true
+ skipSubscriptions: false
+---------------------------------
+
+Now push the project in Prod env  	# push above 2 project api and application in prod env
+Use CI/CD pipeline
+
+
+Add a prod env
+apictl add-env -e env_name -apim api_managment_endpoint_url --token token_url 
+
+eg. #apictl add-env -e prod --apim https://34.121.158.77:9443 --token https://34.121.158.77:8243/token
+
+Login to env(prod)   it will ask the user you can use wso2 api manager user_id
+apictl login prod -k		#use id admin/admin
+
+deploy to prod
+apictl vcs deploy -e prod -k
+
+For prod env we had skiped key, so you  need to go to developer portal - Application and generate keys
+		
+If get error related to vcs.yaml is not found in the repo so pls use below cmd to init vcs
+apictl vcs init
+
+Note if source path not define 1st define it using below cmd
+apictl set --vcs-source-repo-path /home/suryasafetydevices/rough/cicd-demo-2020/cicd-demo-2020
+
+
+
+
+
+--------------------------------------------------------------------
+pipeline {
+    agent any
+    environment { 
+        PATH = "/var/lib/jenkins/workspace/wso2cicddemo/apictl:$PATH"
+    }
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '16', 
+                    numToKeepStr: '10'
+            )
+    }
+    stages {
+        stage('download git repo') {
+            steps {
+                sh """#!/bin/bash
+                apictl version
+                rm -rf /var/lib/jenkins/workspace/wso2cicddemo/cicd-demo-2020
+                git clone https://github.com/manjeetyadav19/cicd-demo-2020.git
+                rm -rf /var/lib/jenkins/workspace/wso2cicddemo/cicd-demo-2020/vcs.yaml
+                """
+            }
+        }
+        stage('Setup Environment for APICTL') {
+            steps {
+                sh """#!/bin/bash
+                ENVCOUNT=\$(apictl list envs --format {{.}} | wc -l)
+                if [ "\$ENVCOUNT" == "0" ]; then
+                    apictl add-env -e prod --apim https://localhost:9443
+                fi
+                """
+            }
+        }
+
+        stage('Deploy APIs To "Prod" Environment') {
+            steps {
+                sh """
+                cd /var/lib/jenkins/workspace/wso2cicddemo/cicd-demo-2020
+                apictl vcs init
+                apictl set --vcs-source-repo-path /var/lib/jenkins/workspace/wso2cicddemo/cicd-demo-2020
+                apictl login prod -u admin -p admin -k
+                apictl vcs deploy -e prod
+                """
+            }
+        }
+    }
+        post { 
+        always { 
+            sh """
+            apictl logout prod
+            """
+        }
+    }
+}
+------------------------------------------------------------------
+
+
+
+apictl init SampleStore --oas ../swagger.yaml
+
+tree ./SampleStore
+
+check in Meta-info api.yaml file
+checck status there etc
+productionUrl
+sandboxUrl
+
+update the icon image in Image folder for api e.g. icon.jpeg
+
+check api_params.yaml , if you have multiple env
+
+environments:
+  - name: dev
+    endpoints:
+      production:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/
+      sandbox:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/      
+  - name: prod
+    endpoints:
+      production:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/    
+      sandbox:
+        url: https://localhost:9443/am/sample/pizzashack/v1/api/
+  
+
+...................................
+
+export a test script using postman client, and export collect as json test script 
+you can use this test script in jenkins pipeline, and put that test scipt under project
+
+now comit the code to source code repository
+
+and you have already attached your source code repo with jenkins pipeline, so when new comit comes it will start run
+
+
+Developer creates api from swagger file from above steps, and then developer push the git repo
+from git repo api pull by jenkin pipeline, and it will deploy in prod env from import cmd
+---------------------------------------------------------------------
+pipeline {
+    agent any
+    environment { 
+        PATH = "/var/lib/jenkins/workspace/wso2cicddemo/apictl:$PATH"
+    }
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '16', 
+                    numToKeepStr: '10'
+            )
+    }
+    stages {
+        stage('download git repo') {
+            steps {
+                sh """#!/bin/bash
+                apictl version
+                rm -rf /var/lib/jenkins/workspace/wso2cicd_sampleapp/SampleStore/
+                git clone https://github.com/manjeetyadav19/SampleStore.git
+                rm -rf /var/lib/jenkins/workspace/wso2cicd_sampleapp/SampleStore/SampleStore/vcs.yaml
+                """
+            }
+        }
+        stage('Setup Environment for APICTL') {
+            steps {
+                sh """#!/bin/bash
+                ENVCOUNT=\$(apictl list envs --format {{.}} | wc -l)
+                if [ "\$ENVCOUNT" == "0" ]; then
+                    apictl add-env -e prod --apim https://localhost:9443
+                fi
+                """
+            }
+        }
+
+        stage('Deploy APIs To "Prod" Environment') {
+            steps {
+                sh """
+                cd /var/lib/jenkins/workspace/wso2cicd_sampleapp/SampleStore/SampleStore
+                #apictl vcs init
+                #apictl set --vcs-source-repo-path /var/lib/jenkins/workspace/wso2cicd_sampleapp/SampleStore/SampleStore
+                apictl login prod -u admin -p admin -k
+                #apictl vcs deploy -e prod
+                apictl import-api -f . -e prod -k --preserve-provider --update --verbose
+                """
+            }
+        }
+    }
+        post { 
+        always { 
+            sh """
+            apictl logout prod
+            """
+        }
+    }
+}
+--------------------------------------------------------------------------
