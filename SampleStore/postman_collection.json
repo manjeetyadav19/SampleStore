@@ -26,7 +26,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://34.121.158.77:8243/pizzashack/1.0.0/menu",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/menu",
 					"protocol": "https",
 					"host": [
 						"34",
@@ -73,7 +73,7 @@
 					"raw": "{\n  \"address\": \"DLF Rajokri\",\n  \"creditCardNumber\": \"2345688\",\n  \"customerName\": \"Manjeet\",\n  \"delivered\": true,\n  \"orderId\": \"1234\",\n  \"pizzaType\": \"Tomato\",\n  \"quantity\": 2\n}"
 				},
 				"url": {
-					"raw": "https://34.121.158.77:8243/pizzashack/1.0.0/order",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order",
 					"protocol": "https",
 					"host": [
 						"34",
@@ -112,7 +112,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://34.121.158.77:8243/pizzashack/1.0.0/order/394fa5b6-034d-4c4f-b8c1-81a6b1ab5147",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/394fa5b6-034d-4c4f-b8c1-81a6b1ab5147",
 					"protocol": "https",
 					"host": [
 						"34",
@@ -160,7 +160,7 @@
 					"raw": "{\n  \"address\": \"DLF Rajokri New delhi\",\n  \"creditCardNumber\": \"23456\",\n  \"customerName\": \"Manjeet\",\n  \"delivered\": true,\n  \"orderId\": \"1234\",\n  \"pizzaType\": \"Tomato\",\n  \"quantity\": 2\n}"
 				},
 				"url": {
-					"raw": "https://34.121.158.77:8243/pizzashack/1.0.0/order/394fa5b6-034d-4c4f-b8c1-81a6b1ab5147",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/394fa5b6-034d-4c4f-b8c1-81a6b1ab5147",
 					"protocol": "https",
 					"host": [
 						"34",
@@ -199,7 +199,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://34.121.158.77:8243/pizzashack/1.0.0/order/2bff2680-9960-443f-8759-773aa82581f4",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/2bff2680-9960-443f-8759-773aa82581f4",
 					"protocol": "https",
 					"host": [
 						"34",
