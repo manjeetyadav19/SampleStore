@@ -30,9 +30,9 @@
 					"protocol": "https",
 					"host": [
 						"34",
-						"121",
-						"158",
-						"77"
+						"125",
+						"64",
+						"26"
 					],
 					"port": "8243",
 					"path": [
@@ -77,9 +77,9 @@
 					"protocol": "https",
 					"host": [
 						"34",
-						"121",
-						"158",
-						"77"
+						"125",
+						"64",
+						"26"
 					],
 					"port": "8243",
 					"path": [
@@ -112,20 +112,20 @@
 					}
 				],
 				"url": {
-					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/394fa5b6-034d-4c4f-b8c1-81a6b1ab5147",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/fb52d8b9-15e9-4e31-9a83-805c29e7eeb5",
 					"protocol": "https",
 					"host": [
 						"34",
-						"121",
-						"158",
-						"77"
+						"125",
+						"64",
+						"26"
 					],
 					"port": "8243",
 					"path": [
 						"pizzashack",
 						"1.0.0",
 						"order",
-						"394fa5b6-034d-4c4f-b8c1-81a6b1ab5147"
+						"fb52d8b9-15e9-4e31-9a83-805c29e7eeb5"
 					]
 				}
 			},
@@ -160,20 +160,20 @@
 					"raw": "{\n  \"address\": \"DLF Rajokri New delhi\",\n  \"creditCardNumber\": \"23456\",\n  \"customerName\": \"Manjeet\",\n  \"delivered\": true,\n  \"orderId\": \"1234\",\n  \"pizzaType\": \"Tomato\",\n  \"quantity\": 2\n}"
 				},
 				"url": {
-					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/394fa5b6-034d-4c4f-b8c1-81a6b1ab5147",
+					"raw": "https://34.125.64.26:8243/pizzashack/1.0.0/order/fb52d8b9-15e9-4e31-9a83-805c29e7eeb5",
 					"protocol": "https",
 					"host": [
 						"34",
-						"121",
-						"158",
-						"77"
+						"125",
+						"64",
+						"26"
 					],
 					"port": "8243",
 					"path": [
 						"pizzashack",
 						"1.0.0",
 						"order",
-						"394fa5b6-034d-4c4f-b8c1-81a6b1ab5147"
+						"fb52d8b9-15e9-4e31-9a83-805c29e7eeb5"
 					]
 				}
 			},
@@ -203,9 +203,9 @@
 					"protocol": "https",
 					"host": [
 						"34",
-						"121",
-						"158",
-						"77"
+						"125",
+						"64",
+						"26"
 					],
 					"port": "8243",
 					"path": [
